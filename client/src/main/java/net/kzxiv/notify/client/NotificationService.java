@@ -13,6 +13,8 @@ import android.util.*;
 import org.json.*;
 import java.io.*;
 import java.nio.charset.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class NotificationService extends NotificationListenerService
 {
@@ -46,7 +48,7 @@ public class NotificationService extends NotificationListenerService
 		
 		if (appFilterEnabled)
 		{
-			java.util.Set<String> selectedApps = prefs.getStringSet(res.getString(R.string.key_selected_apps), new java.util.HashSet<String>());
+			Set<String> selectedApps = prefs.getStringSet(res.getString(R.string.key_selected_apps), new HashSet<String>());
 			String packageName = sbn.getPackageName();
 			
 			if (!selectedApps.contains(packageName))
