@@ -34,17 +34,6 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
-      - name: Sign APK
-        run: |
-          jarsigner --verbose \
-          --sigalg SHA256withRSA \
-          --digestalg SHA-256 \
-          --keystore ./release-key.jks \
-          app/build/outputs/apk/release/app-release-unsigned.apk \
-          my-key-alias \
-          --storepass my-keystore-password \
-          --keypass my-key-password
-
       - name: Align APK
         run: |
           ${ANDROID_SDK_ROOT}/build-tools/30.0.3/zipalign -v -p 4 \
@@ -68,3 +57,4 @@ jobs:
           body: |
             🚀 **New Release!**
             Download the APK below and enjoy the latest features.
+
