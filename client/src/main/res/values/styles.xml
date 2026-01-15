@@ -16,10 +16,5 @@
 		<item name="android:textColorPrimary">@color/textPrimary</item>
 		<item name="android:textColorSecondary">@color/textSecondary</item>
 		<item name="android:windowBackground">@color/backgroundColor</item>
-		<item name="android:preferenceStyle">@style/PreferenceStyle</item>
-	</style>
-
-	<style name="PreferenceStyle" parent="@android:style/Preference">
-		<item name="android:layout">@layout/preference_material</item>
 	</style>
 </resources>
