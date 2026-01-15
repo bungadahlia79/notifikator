@@ -97,23 +97,23 @@ public class HttpTransportService extends IntentService
 		}
 		catch (MalformedURLException e)
 		{
-			Log.e("Geekz Forwarder", String.format("Invalid URL format: %s - %s", endpointUrl, e.toString()));
+			Log.e("Geekz Forwarder", String.format("Invalid URL format: %s - %s", endpointUrl, e.getMessage()));
 		}
 		catch (java.net.SocketTimeoutException e)
 		{
-			Log.e("Geekz Forwarder", String.format("Connection timeout to %s: %s", endpointUrl, e.toString()));
+			Log.e("Geekz Forwarder", String.format("Connection timeout to %s: %s", endpointUrl, e.getMessage()));
 		}
 		catch (java.net.UnknownHostException e)
 		{
-			Log.e("Geekz Forwarder", String.format("Unknown host %s: %s", endpointUrl, e.toString()));
+			Log.e("Geekz Forwarder", String.format("Unknown host %s: %s", endpointUrl, e.getMessage()));
 		}
 		catch (IOException e)
 		{
-			Log.e("Geekz Forwarder", String.format("IO error during HTTP POST to %s: %s", endpointUrl, e.toString()));
+			Log.e("Geekz Forwarder", String.format("IO error during HTTP POST to %s: %s", endpointUrl, e.getMessage()));
 		}
 		catch (Exception e)
 		{
-			Log.e("Geekz Forwarder", String.format("Unexpected error during HTTP POST to %s: %s", endpointUrl, e.toString()));
+			Log.e("Geekz Forwarder", String.format("Unexpected error during HTTP POST to %s: %s", endpointUrl, e.getMessage()));
 		}
 	}
 }
