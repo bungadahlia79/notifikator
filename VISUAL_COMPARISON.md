@@ -17,8 +17,8 @@ Background:     #FAFAFA  (Light Gray)
 
 ### After - Light Mode (New Design)
 ```
-Primary:        #6200EE  (Purple)
-Primary Dark:   #3700B3  (Dark Purple)
+Primary:        #00FF00  (Green)
+Primary Dark:   #00CC00  (Dark Green)
 Accent:         #03DAC6  (Teal)
 Text Primary:   #000000  (Black)
 Text Secondary: #5F6368  (Gray)
@@ -27,8 +27,8 @@ Background:     #FAFAFA  (Light Gray)
 
 ### After - Dark Mode (New Design)
 ```
-Primary:        #BB86FC  (Light Purple)
-Primary Dark:   #8A5FCA  (Medium Purple)
+Primary:        #00FF00  (Green)
+Primary Dark:   #00CC00  (Dark Green)
 Accent:         #03DAC6  (Teal)
 Text Primary:   #E0E0E0  (Light Gray)
 Text Secondary: #A0A0A0  (Medium Gray)
@@ -79,13 +79,13 @@ Background:     #121212  (True Black)
 - No visual separation
 
 **After - Light Mode:**
-- Purple action bar
+- Green action bar
 - Card-like preferences with subtle elevation
 - Modern typography with better spacing
 - Clear visual hierarchy
 
 **After - Dark Mode:**
-- Light purple action bar for visibility
+- Green action bar for visibility
 - Dark cards (#1E1E1E) on darker background (#121212)
 - Light text with proper contrast
 - OLED-optimized true black
@@ -98,14 +98,14 @@ Background:     #121212  (True Black)
 - 12dp padding
 
 **After - Light Mode:**
-- Purple header with improved typography
+- Green header with improved typography
 - Card-based list items with elevation
 - 8dp item spacing for breathing room
 - 16dp padding for better touch targets
 - Modern ripple effects
 
 **After - Dark Mode:**
-- Light purple header
+- Green header
 - Dark cards with visible elevation
 - Same improved spacing
 - Optimized for OLED displays

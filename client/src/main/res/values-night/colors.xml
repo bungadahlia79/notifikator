@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- Dark mode color palette - Modern Material Design -->
-	<color name="colorPrimary">#BB86FC</color>
-	<color name="colorPrimaryLight">#E7B9FF</color>
-	<color name="colorPrimaryDark">#8A5FCA</color>
+	<color name="colorPrimary">#00FF00</color>
+	<color name="colorPrimaryLight">#66FF66</color>
+	<color name="colorPrimaryDark">#00CC00</color>
 	<color name="colorAccent">#03DAC6</color>
 	<color name="textPrimary">#E0E0E0</color>
 	<color name="textSecondary">#A0A0A0</color>

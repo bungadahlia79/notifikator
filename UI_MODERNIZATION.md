@@ -13,13 +13,13 @@ The application now automatically adapts to the system-wide dark/light mode sett
 
 **Light Mode (Default):**
 - Created modern Material Design color palette in `values/colors.xml`
-- Primary color: #6200EE (vibrant purple)
+- Primary color: #00FF00 (vibrant green)
 - Accent color: #03DAC6 (teal)
 - Background: #FAFAFA (light gray)
 
 **Dark Mode:**
 - Created dark theme colors in `values-night/colors.xml`
-- Primary color: #BB86FC (lighter purple for better visibility)
+- Primary color: #00FF00 (green for better visibility)
 - Accent color: #03DAC6 (teal, optimized for dark backgrounds)
 - Background: #121212 (Material Design recommended dark background)
 - Text colors adjusted for proper contrast
@@ -57,7 +57,7 @@ Android automatically loads resources from the `values-night` directory when the
 **Light Mode:**
 - Clean white backgrounds
 - High contrast text colors
-- Purple/teal accent colors for modern feel
+- Green/teal accent colors for modern feel
 
 **Dark Mode:**
 - True black (#121212) background for OLED optimization
@@ -106,7 +106,7 @@ Android automatically loads resources from the `values-night` directory when the
    - Ensure device is in light mode (Settings > Display > Dark theme: OFF)
    - Open the app and verify:
      - White/light backgrounds
-     - Purple primary color in action bar
+     - Green primary color in action bar
      - Proper text contrast
      - Card shadows visible
 
@@ -114,7 +114,7 @@ Android automatically loads resources from the `values-night` directory when the
    - Switch device to dark mode (Settings > Display > Dark theme: ON)
    - Open the app and verify:
      - Dark backgrounds (#121212)
-     - Lighter purple primary color
+     - Green primary color
      - Proper text contrast (light text on dark)
      - Card elevation still visible
 
