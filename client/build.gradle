@@ -16,6 +16,14 @@ android
 		abortOnError false
 	}
 	namespace 'com.geekz.forwarder'
+	
+	applicationVariants.all { variant ->
+		variant.outputs.all { output ->
+			def formattedDate = new Date().format('yyyyMMdd_HHmmss')
+			def newName = "notifikator_v${variant.versionName}_${variant.buildType.name}_${formattedDate}.apk"
+			outputFileName = newName
+		}
+	}
 }
 
 dependencies
