@@ -97,7 +97,7 @@ public class AppSelectionActivity extends ListActivity
 			super(AppSelectionActivity.this, android.R.layout.simple_list_item_multiple_choice, apps);
 		}
 		
-		public View getView(int position, View convertView, ViewGroup parent)
+		public View getView(final int position, View convertView, ViewGroup parent)
 		{
 			View view = convertView;
 			if (view == null)
@@ -118,12 +118,15 @@ public class AppSelectionActivity extends ListActivity
 				public void onClick(View v)
 				{
 					CheckBox cb = (CheckBox) v.findViewById(android.R.id.checkbox);
-					cb.setChecked(!cb.isChecked());
+					boolean newState = !cb.isChecked();
+					cb.setChecked(newState);
 					
-					if (cb.isChecked())
+					if (newState)
 						selectedApps.add(app.packageName);
 					else
 						selectedApps.remove(app.packageName);
+					
+					notifyDataSetChanged();
 				}
 			});
 			

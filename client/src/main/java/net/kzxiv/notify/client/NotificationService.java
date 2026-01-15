@@ -48,7 +48,7 @@ public class NotificationService extends NotificationListenerService
 		
 		if (appFilterEnabled)
 		{
-			Set<String> selectedApps = prefs.getStringSet(res.getString(R.string.key_selected_apps), new HashSet<String>());
+			Set<String> selectedApps = new HashSet<String>(prefs.getStringSet(res.getString(R.string.key_selected_apps), new HashSet<String>()));
 			String packageName = sbn.getPackageName();
 			
 			if (!selectedApps.contains(packageName))
