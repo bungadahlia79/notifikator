@@ -1,4 +1,4 @@
-package net.kzxiv.notify.client;
+package com.geekz.forwarder;
 
 import java.io.*;
 import java.nio.charset.*;

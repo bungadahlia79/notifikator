@@ -1,4 +1,4 @@
-package net.kzxiv.notify.client;
+package com.geekz.forwarder;
 
 import android.content.*;
 import android.graphics.*;
