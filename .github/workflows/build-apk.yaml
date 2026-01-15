@@ -51,16 +51,20 @@ jobs:
           app/build/outputs/apk/release/app-release-unsigned.apk \
           app/build/outputs/apk/release/app-release.apk
 
-      - name: Upload Release APK
+      - name: Upload Release APK as Artifact
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: app/build/outputs/apk/release/app-release.apk
 
       - name: Create GitHub Release
+        id: create_release
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
           artifacts: app/build/outputs/apk/release/app-release.apk
           replacesArtifacts: true
+          body: |
+            🚀 **New Release!**
+            Download the APK below and enjoy the latest features.
