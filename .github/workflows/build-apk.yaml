@@ -1,37 +1,75 @@
-name: Build and Release APK
+name: Android Release
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*' # Workflow akan berjalan ketika ada push Git tag yang dimulai dengan "v" (contoh: v1.0.0).
 
 jobs:
   build:
-    name: Build APK
+    name: Build and Release Android App
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # Step 1: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up JDK
+      # Step 2: Setup JDK
+      - name: Set Up Java 11
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '11'
 
-      - name: Cache Gradle packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: gradle-caches-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: gradle-caches-
+      # Step 3: Decrypt Keystore File
+      # Ubah "keystore.jks" dengan nama file keystore Anda dan pastikan Anda sudah menambahkan secret `ANDROID_KEYSTORE_BASE64` di repository ini.
+      - name: Decrypt Keystore File
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > release-key.jks
 
-      - name: Build the APK
+      # Step 4: Set up Gradle Wrapper
+      - name: Set Up Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: '7.5' # Sesuaikan dengan versi Gradle Anda
+
+      # Step 5: Build Release APK
+      - name: Build Release APK
         run: ./gradlew assembleRelease
 
-      - name: Upload APK to GitHub Release
+      # Step 6: Sign APK
+      # Ubah parameter `--ks`, `--ks-key-alias`, dll. sesuai keystore yang Anda gunakan.
+      - name: Sign APK
+        run: |
+          jarsigner --verbose \
+          --sigalg SHA256withRSA \
+          --digestalg SHA-256 \
+          --keystore ./release-key.jks \
+          app/build/outputs/apk/release/app-release-unsigned.apk \
+          ${{ secrets.ANDROID_KEY_ALIAS }} \
+          --storepass ${{ secrets.ANDROID_KEYSTORE_PASSWORD }} \
+          --keypass ${{ secrets.ANDROID_KEY_PASSWORD }}
+
+      # Step 7: Align APK
+      - name: Align APK
+        run: |
+          ${ANDROID_SDK_ROOT}/build-tools/30.0.3/zipalign -v -p 4 \
+          app/build/outputs/apk/release/app-release-unsigned.apk \
+          app/build/outputs/apk/release/app-release.apk
+
+      # Step 8: Upload Release APK as Artifact
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: app/build/outputs/apk/release/app-release.apk
+
+      # Step 9: Release on GitHub
+      - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "app/build/outputs/apk/release/app-release-unsigned.apk"
           token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+          artifacts: app/build/outputs/apk/release/app-release.apk
+          replacesArtifacts: true
