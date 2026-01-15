@@ -17,6 +17,18 @@
 			<intent android:action="android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS" />
 		</Preference>
 	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/app_filtering">
+		<CheckBoxPreference
+			android:title="@string/enable_app_filter"
+			android:summary="@string/enable_app_filter_summary"
+			android:key="@string/key_app_filter"
+			android:defaultValue="false" />
+		<Preference
+			android:title="@string/select_apps"
+			android:summary="@string/select_apps_summary"
+			android:key="@string/key_selected_apps"
+			android:dependency="@string/key_app_filter" />
+	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/endpoint">
 		<EditTextPreference
 			android:title="@string/url"

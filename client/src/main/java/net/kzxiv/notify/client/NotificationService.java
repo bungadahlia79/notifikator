@@ -20,12 +20,12 @@ public class NotificationService extends NotificationListenerService
 	{
 		super.onCreate();
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-		Log.d("Notifikator", "Notification service created.");
+		Log.d("Geekz Forwarder", "Notification service created.");
 	}
 
 	public void onDestroy()
 	{
-		Log.d("Notifikator", "Notification service destroyed.");
+		Log.d("Geekz Forwarder", "Notification service destroyed.");
 		super.onDestroy();
 	}
 
@@ -38,8 +38,22 @@ public class NotificationService extends NotificationListenerService
 
 		if (!enabled)
 		{
-			Log.i("Notifikator", "Skipping notification because not enabled.");
+			Log.i("Geekz Forwarder", "Skipping notification because not enabled.");
 			return;
+		}
+
+		final boolean appFilterEnabled = prefs.getBoolean(res.getString(R.string.key_app_filter), false);
+		
+		if (appFilterEnabled)
+		{
+			java.util.Set<String> selectedApps = prefs.getStringSet(res.getString(R.string.key_selected_apps), new java.util.HashSet<String>());
+			String packageName = sbn.getPackageName();
+			
+			if (!selectedApps.contains(packageName))
+			{
+				Log.i("Geekz Forwarder", "Skipping notification from " + packageName + " because app filter is enabled and app is not selected.");
+				return;
+			}
 		}
 
 		final boolean wifiOnly = prefs.getBoolean(res.getString(R.string.key_wifionly), false);
@@ -51,7 +65,7 @@ public class NotificationService extends NotificationListenerService
 
 			if (ni == null || ni.getType() != ConnectivityManager.TYPE_WIFI)
 			{
-				Log.i("Notifikator", "Skipping notification because not connected to wifi.");
+				Log.i("Geekz Forwarder", "Skipping notification because not connected to wifi.");
 				return;
 			}
 		}
@@ -61,7 +75,7 @@ public class NotificationService extends NotificationListenerService
 
 		if (endpointUrl == null || "".equals(endpointUrl))
 		{
-			Log.e("Notifikator", "No endpoint specified.");
+			Log.e("Geekz Forwarder", "No endpoint specified.");
 			return;
 		}
 
@@ -86,7 +100,7 @@ public class NotificationService extends NotificationListenerService
 
 		if (payload == null)
 		{
-			Log.e("Notifikator", String.format("No payload or unknown protocol \"%s\".", protocol));
+			Log.e("Geekz Forwarder", String.format("No payload or unknown protocol \"%s\".", protocol));
 			return;
 		}
 

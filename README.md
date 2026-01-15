@@ -1,7 +1,7 @@
-Notifikator
-===========
+Geekz Forwarder
+===============
 
-This is an Android application that catches every notification and forwards them to an HTTP endpoint.
+This is an Android application that catches notifications and forwards them to an HTTP endpoint.
 
 It natively supports talking to the [Kodi](https://kodi.tv/) JSON-RPC interface, [Notifications for Android TV](https://play.google.com/store/apps/details?id=de.cyberdream.androidtv.notifications.google), as well as sending plain JSON.
 

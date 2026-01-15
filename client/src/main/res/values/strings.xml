@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Notifikator</string>
+	<string name="app_name">Geekz Forwarder</string>
 
 	<string name="key_enabled">Enabled</string>
 	<string name="key_wifionly">WifiOnly</string>
@@ -10,6 +10,8 @@
 	<string name="key_endpointuser">EndpointUsername</string>
 	<string name="key_endpointpw">EndpointPassword</string>
 	<string name="key_send">NotificationSend</string>
+	<string name="key_app_filter">AppFilter</string>
+	<string name="key_selected_apps">SelectedApps</string>
 
 	<string name="protocol_kodi">kodi</string>
 	<string name="protocol_kodi_addon">kodi+addon</string>
@@ -48,6 +50,11 @@
 	<string name="username_summary">Username for HTTP authentication</string>
 	<string name="password">Password</string>
 	<string name="password_summary">Password for HTTP authentication</string>
+	<string name="app_filtering">App Filtering</string>
+	<string name="enable_app_filter">Enable App Filter</string>
+	<string name="enable_app_filter_summary">Only forward notifications from selected apps</string>
+	<string name="select_apps">Select Apps</string>
+	<string name="select_apps_summary">Choose which apps to forward notifications from</string>
 	<string name="test">Testing</string>
 	<string name="send_notification">Send Notification</string>
 	<string name="send_notification_summary">Send a test notification</string>

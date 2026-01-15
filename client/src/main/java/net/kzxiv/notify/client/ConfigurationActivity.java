@@ -1,6 +1,7 @@
 package net.kzxiv.notify.client;
 
 import android.app.*;
+import android.content.*;
 import android.content.res.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
@@ -35,6 +36,12 @@ public class ConfigurationActivity extends PreferenceActivity
 
 			mgr.notify(0, nb.build());
 			return false;
+		}
+		else if (res.getString(R.string.key_selected_apps).equals(preference.getKey()))
+		{
+			Intent intent = new Intent(this, AppSelectionActivity.class);
+			startActivity(intent);
+			return true;
 		}
 
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
