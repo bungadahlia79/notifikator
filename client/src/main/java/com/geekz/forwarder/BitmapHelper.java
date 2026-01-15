@@ -3,6 +3,7 @@ package com.geekz.forwarder;
 import android.content.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
+import android.os.*;
 import android.util.*;
 import java.io.*;
 
@@ -26,6 +27,52 @@ final class BitmapHelper
 		{
 			return null;
 		}
+	}
+
+	public final static Bitmap getIconBitmap(Context context, Object iconObject)
+	{
+		if (iconObject == null)
+			return null;
+
+		try
+		{
+			// Handle Bitmap directly (API < 23)
+			if (iconObject instanceof Bitmap)
+			{
+				return (Bitmap)iconObject;
+			}
+			
+			// Handle Icon object (API 23+)
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && iconObject instanceof android.graphics.drawable.Icon)
+			{
+				android.graphics.drawable.Icon icon = (android.graphics.drawable.Icon)iconObject;
+				Drawable drawable = icon.loadDrawable(context);
+				if (drawable instanceof BitmapDrawable)
+				{
+					return ((BitmapDrawable)drawable).getBitmap();
+				}
+				else if (drawable != null)
+				{
+					// Convert drawable to bitmap
+					Bitmap bitmap = Bitmap.createBitmap(
+						drawable.getIntrinsicWidth() > 0 ? drawable.getIntrinsicWidth() : 1,
+						drawable.getIntrinsicHeight() > 0 ? drawable.getIntrinsicHeight() : 1,
+						Bitmap.Config.ARGB_8888
+					);
+					Canvas canvas = new Canvas(bitmap);
+					drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+					drawable.draw(canvas);
+					return bitmap;
+				}
+			}
+		}
+		catch (Exception ex)
+		{
+			// Log error but don't crash
+			android.util.Log.w("BitmapHelper", "Failed to extract icon bitmap", ex);
+		}
+		
+		return null;
 	}
 
 	public final static Bitmap ensureSize(Bitmap bitmap, int maxWidth, int maxHeight)

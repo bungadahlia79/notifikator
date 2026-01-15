@@ -207,7 +207,7 @@ public class ConfigurationActivity extends PreferenceActivity
 		if (title == null || text == null)
 			return null;
 
-		final Bitmap icon = (Bitmap)notification.extras.get(Notification.EXTRA_LARGE_ICON);
+		final Bitmap icon = BitmapHelper.getIconBitmap(this, notification.extras.get(Notification.EXTRA_LARGE_ICON));
 
 		JSONObject result = new JSONObject();
 		try
@@ -241,7 +241,7 @@ public class ConfigurationActivity extends PreferenceActivity
 		if (title == null || text == null)
 			return null;
 
-		Bitmap icon = (Bitmap)notification.extras.get(Notification.EXTRA_LARGE_ICON);
+		Bitmap icon = BitmapHelper.getIconBitmap(this, notification.extras.get(Notification.EXTRA_LARGE_ICON));
 
 		if (icon == null)
 			icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.icon)).getBitmap();
@@ -286,7 +286,7 @@ public class ConfigurationActivity extends PreferenceActivity
 		final String title = notification.extras.getString(Notification.EXTRA_TITLE);
 		final String text = notification.extras.getString(Notification.EXTRA_TEXT);
 		final Bitmap iconSm = BitmapHelper.getPackageIcon(this, packageName, notification.extras.getInt(Notification.EXTRA_SMALL_ICON));
-		final Bitmap iconLg = (Bitmap)notification.extras.get(Notification.EXTRA_LARGE_ICON);
+		final Bitmap iconLg = BitmapHelper.getIconBitmap(this, notification.extras.get(Notification.EXTRA_LARGE_ICON));
 
 		JSONObject result = new JSONObject();
 		try
