@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:title="@string/general">
+	<PreferenceCategory 
+		android:title="@string/general"
+		android:layout="@layout/preference_category_material">
 		<SwitchPreference
 			android:title="@string/enabled"
 			android:summary="@string/enabled_summary"
@@ -17,7 +19,9 @@
 			<intent android:action="android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS" />
 		</Preference>
 	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/app_filtering">
+	<PreferenceCategory 
+		android:title="@string/app_filtering"
+		android:layout="@layout/preference_category_material">
 		<CheckBoxPreference
 			android:title="@string/enable_app_filter"
 			android:summary="@string/enable_app_filter_summary"
@@ -29,7 +33,9 @@
 			android:key="@string/key_selected_apps"
 			android:dependency="@string/key_app_filter" />
 	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/endpoint">
+	<PreferenceCategory 
+		android:title="@string/endpoint"
+		android:layout="@layout/preference_category_material">
 		<EditTextPreference
 			android:title="@string/url"
 			android:key="@string/key_endpointurl"
@@ -62,7 +68,9 @@
 			android:inputType="textPassword"
 			android:defaultValue="" />
 	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/test">
+	<PreferenceCategory 
+		android:title="@string/test"
+		android:layout="@layout/preference_category_material">
 		<Preference
 			android:title="@string/send_notification"
 			android:summary="@string/send_notification_summary"

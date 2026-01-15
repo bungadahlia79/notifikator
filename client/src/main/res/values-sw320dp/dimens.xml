@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Optimized dimensions for small screens (320dp width) -->
+    <dimen name="preference_padding_horizontal">12dp</dimen>
+    <dimen name="preference_padding_vertical">10dp</dimen>
+    <dimen name="preference_title_size">15sp</dimen>
+    <dimen name="preference_summary_size">13sp</dimen>
+    <dimen name="preference_min_height">48dp</dimen>
+    <dimen name="list_item_padding">10dp</dimen>
+    <dimen name="list_item_min_height">48dp</dimen>
+    <dimen name="header_padding">12dp</dimen>
+    <dimen name="header_text_size">18sp</dimen>
+    <dimen name="list_item_text_size">15sp</dimen>
+</resources>
