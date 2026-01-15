@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default dimensions for normal screens -->
+    <dimen name="preference_padding_horizontal">16dp</dimen>
+    <dimen name="preference_padding_vertical">12dp</dimen>
+    <dimen name="preference_title_size">16sp</dimen>
+    <dimen name="preference_summary_size">14sp</dimen>
+    <dimen name="preference_min_height">56dp</dimen>
+    <dimen name="list_item_padding">12dp</dimen>
+    <dimen name="list_item_min_height">56dp</dimen>
+    <dimen name="header_padding">16dp</dimen>
+    <dimen name="header_text_size">20sp</dimen>
+    <dimen name="list_item_text_size">16sp</dimen>
+</resources>
