@@ -31,7 +31,9 @@
 			</intent-filter>
 		</activity>
 
-		<activity android:name=".AppSelectionActivity"
+		<activity
+			android:name=".AppSelectionActivity"
+			android:exported="false"
 			android:label="@string/select_apps" />
 	</application>
 </manifest>
