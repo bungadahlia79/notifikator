@@ -106,7 +106,7 @@ Android automatically loads resources from the `values-night` directory when the
    - Ensure device is in light mode (Settings > Display > Dark theme: OFF)
    - Open the app and verify:
      - White/light backgrounds
-     - Purple primary color in action bar
+     - Green primary color in action bar
      - Proper text contrast
      - Card shadows visible
 
@@ -114,7 +114,7 @@ Android automatically loads resources from the `values-night` directory when the
    - Switch device to dark mode (Settings > Display > Dark theme: ON)
    - Open the app and verify:
      - Dark backgrounds (#121212)
-     - Lighter purple primary color
+     - Green primary color
      - Proper text contrast (light text on dark)
      - Card elevation still visible
 

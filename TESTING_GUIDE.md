@@ -103,7 +103,7 @@ adb install notifikator_v1.1_debug_*.apk
 **Test Case 8: App Selection Screen**
 1. Tap "Select Apps" preference
 2. Verify the app list:
-   - ✅ Header is styled with purple background
+   - ✅ Header is styled with green background
    - ✅ List items are card-based
    - ✅ Items have proper spacing (8dp gaps)
    - ✅ Checkboxes work correctly
