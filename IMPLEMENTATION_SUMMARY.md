@@ -7,15 +7,15 @@ This PR successfully modernizes the Notifikator Android app UI with dark/light m
 ## Key Features Implemented
 
 ### 1. ✅ Automatic Dark/Light Mode Switching
-- **Light Mode**: Modern purple/teal palette with white backgrounds
+- **Light Mode**: Modern green/teal palette with white backgrounds
 - **Dark Mode**: OLED-optimized with true black (#121212) background
 - **Zero Configuration**: Automatically follows system theme setting
 - **Instant Switching**: No app restart required
 
 ### 2. ✅ Modern Material Design
 - **Color Palette**: 
-  - Light: Purple (#6200EE) primary with teal (#03DAC6) accents
-  - Dark: Light purple (#BB86FC) with teal accents for better visibility
+  - Light: Green (#00FF00) primary with teal (#03DAC6) accents
+  - Dark: Green (#00FF00) with teal accents for better visibility
 - **Typography**: Sans-serif font family with optimized letter spacing
 - **Elevation**: Card-based layouts with proper shadows (2-4dp)
 - **Spacing**: Increased padding (16dp) for better touch targets (64dp min height)
@@ -61,7 +61,7 @@ This PR successfully modernizes the Notifikator Android app UI with dark/light m
    Settings > Display > Dark theme: OFF
    ```
    - Open app, verify white backgrounds
-   - Check purple action bar
+   - Check green action bar
    - Verify text is readable
    - Test list item interactions
 
@@ -71,7 +71,7 @@ This PR successfully modernizes the Notifikator Android app UI with dark/light m
    ```
    - App should immediately update
    - Verify dark backgrounds
-   - Check light purple action bar
+   - Check green action bar
    - Confirm text contrast
 
 4. **Test Dynamic Switching**:

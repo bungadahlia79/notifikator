@@ -30,7 +30,7 @@ adb install notifikator_v1.1_debug_*.apk
    - Settings → Display → Dark theme: OFF
 2. Launch Notifikator app
 3. Expected Results:
-   - ✅ Action bar is purple (#6200EE)
+   - ✅ Action bar is green (#00FF00)
    - ✅ Background is light (#FAFAFA)
    - ✅ Text is black and readable
    - ✅ Preference cards have white background
@@ -41,7 +41,7 @@ adb install notifikator_v1.1_debug_*.apk
    - Settings → Display → Dark theme: ON
 2. Launch Notifikator app
 3. Expected Results:
-   - ✅ Action bar is light purple (#BB86FC)
+   - ✅ Action bar is green (#00FF00)
    - ✅ Background is true black (#121212)
    - ✅ Text is light gray and readable
    - ✅ Preference cards are dark gray (#1E1E1E)

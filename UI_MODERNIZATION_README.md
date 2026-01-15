@@ -8,12 +8,12 @@ This PR transforms the Notifikator Android app with a modern, minimalist UI that
 
 ### 🌓 Dark & Light Mode
 - **Automatic switching** based on Android system settings
-- **Light Mode**: Modern purple/teal palette with white backgrounds
+- **Light Mode**: Modern green/teal palette with white backgrounds
 - **Dark Mode**: OLED-optimized with true black (#121212) backgrounds
 - **Zero configuration** needed - just works!
 
 ### 🎯 Modern Material Design
-- **Updated color palette**: Purple (#6200EE) and teal (#03DAC6) accents
+- **Updated color palette**: Green (#00FF00) and teal (#03DAC6) accents
 - **Card-based layouts**: Subtle elevation and shadows for depth
 - **Modern typography**: Sans-serif font family with optimized spacing
 - **Enhanced spacing**: Comfortable padding and touch targets (64dp minimum)
@@ -29,7 +29,7 @@ This PR transforms the Notifikator Android app with a modern, minimalist UI that
 | Aspect | Before | After |
 |--------|--------|-------|
 | **Dark Mode** | ❌ Not supported | ✅ Automatic |
-| **Color Scheme** | Blue/Orange | Purple/Teal |
+| **Color Scheme** | Blue/Orange | Green/Teal |
 | **Typography** | Basic | Modern with letter spacing |
 | **Card Elevation** | None | 2dp with shadows |
 | **Touch Targets** | 56dp | 64dp |
@@ -57,7 +57,7 @@ This PR transforms the Notifikator Android app with a modern, minimalist UI that
 
 ### Light Mode
 ```
-Primary:    #6200EE  (Purple)
+Primary:    #00FF00  (Green)
 Accent:     #03DAC6  (Teal)
 Background: #FAFAFA  (Light Gray)
 Cards:      #FFFFFF  (White)
@@ -66,7 +66,7 @@ Text:       #000000  (Black)
 
 ### Dark Mode
 ```
-Primary:    #BB86FC  (Light Purple)
+Primary:    #00FF00  (Green)
 Accent:     #03DAC6  (Teal)
 Background: #121212  (True Black - OLED optimized)
 Cards:      #1E1E1E  (Dark Gray)
