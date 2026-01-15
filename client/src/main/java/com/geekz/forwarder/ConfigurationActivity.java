@@ -1,20 +1,26 @@
 package com.geekz.forwarder;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.*;
+import android.content.pm.PackageManager;
 import android.content.res.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
 import android.os.*;
 import android.preference.*;
 import android.widget.Toast;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class ConfigurationActivity extends PreferenceActivity
 {
+	private static final int PERMISSION_REQUEST_POST_NOTIFICATIONS = 1;
+
 	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -23,9 +29,31 @@ public class ConfigurationActivity extends PreferenceActivity
 		try {
 			PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 			addPreferencesFromResource(R.xml.preferences);
+			
+			// Request POST_NOTIFICATIONS permission for Android 13+ (API 33+)
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+				if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) 
+					!= PackageManager.PERMISSION_GRANTED) {
+					ActivityCompat.requestPermissions(this,
+						new String[]{Manifest.permission.POST_NOTIFICATIONS},
+						PERMISSION_REQUEST_POST_NOTIFICATIONS);
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			Toast.makeText(this, "Error loading preferences", Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		if (requestCode == PERMISSION_REQUEST_POST_NOTIFICATIONS) {
+			if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+				Toast.makeText(this, "Notification permission granted", Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(this, "Notification permission denied. App may not work properly.", Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 

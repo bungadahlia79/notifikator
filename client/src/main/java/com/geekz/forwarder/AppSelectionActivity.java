@@ -84,10 +84,8 @@ public class AppSelectionActivity extends ListActivity
 		apps = new ArrayList<AppInfo>();
 		for (ApplicationInfo info : packages)
 		{
-			// Skip apps that don't have launcher icons
-			if (pm.getLaunchIntentForPackage(info.packageName) == null)
-				continue;
-			
+			// Include all apps, not just those with launcher intents
+			// This ensures apps like Dana, Instagram, and other notification-sending apps are included
 			String appName = pm.getApplicationLabel(info).toString();
 			apps.add(new AppInfo(info.packageName, appName, info));
 		}
