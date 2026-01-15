@@ -27,7 +27,7 @@ jobs:
     - name: Verify APK File
       id: verify_apk
       run: |
-        if [ ! -f app/build/outputs/apk/debug/app-debug.apk ]; then
+        if [ ! -f client/build/outputs/apk/debug/client-debug.apk ]; then
           echo "APK file not found! Build might have failed."
           exit 1
         fi
@@ -37,7 +37,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.SECRET_KEY }}
       run: |
-        APK_PATH=app/build/outputs/apk/debug/app-debug.apk
+        APK_PATH=client/build/outputs/apk/debug/client-debug.apk
         TAG_NAME="${{ github.ref_name }}"
         RELEASE_NAME="Release ${{ github.ref_name }}"
         gh release create "$TAG_NAME" "$APK_PATH" --title "$RELEASE_NAME" --notes "Automated APK release"
