@@ -1,4 +1,4 @@
-package net.kzxiv.notify.client;
+package com.geekz.forwarder;
 
 import android.app.Activity;
 import android.app.Notification;

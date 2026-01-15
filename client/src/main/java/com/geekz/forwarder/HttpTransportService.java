@@ -1,4 +1,4 @@
-package net.kzxiv.notify.client;
+package com.geekz.forwarder;
 
 import android.app.*;
 import android.content.*;
@@ -8,12 +8,12 @@ import java.net.*;
 
 public class HttpTransportService extends IntentService
 {
-	public final static String EXTRA_URL = "net.kzxiv.notifikator.client.http.URL";
-	public final static String EXTRA_AUTH = "net.kzxiv.notifikator.client.http.AUTH";
-	public final static String EXTRA_USERNAME = "net.kzxiv.notifikator.client.http.USERNAME";
-	public final static String EXTRA_PASSWORD = "net.kzxiv.notifikator.client.http.PASSWORD";
-	public final static String EXTRA_PAYLOAD_TYPE = "net.kzxiv.notifikator.client.http.PAYLOAD_TYPE";
-	public final static String EXTRA_PAYLOAD = "net.kzxiv.notifikator.client.http.PAYLOAD";
+	public final static String EXTRA_URL = "com.geekz.forwarder.http.URL";
+	public final static String EXTRA_AUTH = "com.geekz.forwarder.http.AUTH";
+	public final static String EXTRA_USERNAME = "com.geekz.forwarder.http.USERNAME";
+	public final static String EXTRA_PASSWORD = "com.geekz.forwarder.http.PASSWORD";
+	public final static String EXTRA_PAYLOAD_TYPE = "com.geekz.forwarder.http.PAYLOAD_TYPE";
+	public final static String EXTRA_PAYLOAD = "com.geekz.forwarder.http.PAYLOAD";
 
 	public HttpTransportService()
 	{

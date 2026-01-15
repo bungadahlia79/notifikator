@@ -2,18 +2,18 @@ apply plugin: 'com.android.application'
 
 android
 {
-	compileSdkVersion 33
+	compileSdkVersion 34
 	defaultConfig
 	{
-		applicationId "net.kzxiv.notify.client"
+		applicationId "com.geekz.forwarder"
 		minSdkVersion 21
-		targetSdkVersion 33
+		targetSdkVersion 34
 		versionCode 2
 		versionName "1.1"
 	}
-	lintOptions
+	lint
 	{
 		abortOnError false
 	}
-	namespace 'net.kzxiv.notify.client'
+	namespace 'com.geekz.forwarder'
 }
