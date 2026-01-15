@@ -105,6 +105,8 @@ public class NotificationService extends NotificationListenerService
 			Log.e("Geekz Forwarder", String.format("No payload or unknown protocol \"%s\".", protocol));
 			return;
 		}
+		
+		Log.d("Geekz Forwarder", String.format("Preparing to send notification via protocol %s to %s", protocol, endpointUrl));
 
 		Intent i = new Intent(this, HttpTransportService.class);
 		i.putExtra(HttpTransportService.EXTRA_URL, endpointUrl);
@@ -118,6 +120,7 @@ public class NotificationService extends NotificationListenerService
 		i.putExtra(HttpTransportService.EXTRA_PAYLOAD_TYPE, (String)payload[0]);
 		i.putExtra(HttpTransportService.EXTRA_PAYLOAD, (byte[])payload[1]);
 
+		Log.d("Geekz Forwarder", "Starting HttpTransportService");
 		startService(i);
 	}
 
