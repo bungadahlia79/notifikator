@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -20,6 +21,7 @@ import java.util.Set;
 
 public class AppSelectionActivity extends ListActivity
 {
+	private static final String TAG = "AppSelectionActivity";
 	private List<AppInfo> apps;
 	private Set<String> selectedApps;
 	private SharedPreferences prefs;
@@ -81,18 +83,36 @@ public class AppSelectionActivity extends ListActivity
 		PackageManager pm = getPackageManager();
 		List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
 		
+		Log.d(TAG, "Total packages found: " + packages.size());
+		
 		apps = new ArrayList<AppInfo>();
+		int systemAppsFiltered = 0;
+		int appsIncluded = 0;
+		
 		for (ApplicationInfo info : packages)
 		{
-			// Only include user-installed apps, exclude system apps
-			if ((info.flags & ApplicationInfo.FLAG_SYSTEM) == 0)
+			// More inclusive filtering logic:
+			// Include apps that are either:
+			// 1. User-installed apps (not system apps), OR
+			// 2. System apps that have been updated by the user (FLAG_UPDATED_SYSTEM_APP)
+			// This ensures we catch apps like Dana, Gopay, Instagram that might be pre-installed
+			boolean isUserApp = (info.flags & ApplicationInfo.FLAG_SYSTEM) == 0;
+			boolean isUpdatedSystemApp = (info.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
+			
+			if (isUserApp || isUpdatedSystemApp)
 			{
-				// Include all user apps, not just those with launcher intents
-				// This ensures apps like Dana, Instagram, and other notification-sending apps are included
 				String appName = pm.getApplicationLabel(info).toString();
 				apps.add(new AppInfo(info.packageName, appName, info));
+				appsIncluded++;
+				Log.d(TAG, "Included app: " + appName + " (" + info.packageName + ")");
+			}
+			else
+			{
+				systemAppsFiltered++;
 			}
 		}
+		
+		Log.d(TAG, "Apps included: " + appsIncluded + ", System apps filtered: " + systemAppsFiltered);
 		
 		// Sort by app name
 		Collections.sort(apps, new Comparator<AppInfo>()

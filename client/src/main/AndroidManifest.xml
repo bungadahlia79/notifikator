@@ -2,6 +2,8 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<!-- Required for Android 11+ to query all installed packages -->
+	<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
 	<application
 		android:allowBackup="true"
