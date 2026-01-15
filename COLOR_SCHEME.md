@@ -4,8 +4,8 @@
 
 | Element | Color Code | Usage |
 |---------|-----------|-------|
-| Primary | #6200EE | Action bar, primary buttons |
-| Primary Dark | #3700B3 | Status bar |
+| Primary | #00FF00 | Action bar, primary buttons |
+| Primary Dark | #00CC00 | Status bar |
 | Accent | #03DAC6 | Category headers, toggles, highlights |
 | Text Primary | #000000 | Main text, titles |
 | Text Secondary | #5F6368 | Descriptions, hints |
@@ -16,8 +16,8 @@
 
 | Element | Color Code | Usage |
 |---------|-----------|-------|
-| Primary | #BB86FC | Action bar, primary buttons |
-| Primary Dark | #8A5FCA | Status bar |
+| Primary | #00FF00 | Action bar, primary buttons |
+| Primary Dark | #00CC00 | Status bar |
 | Accent | #03DAC6 | Category headers, toggles, highlights |
 | Text Primary | #E0E0E0 | Main text, titles |
 | Text Secondary | #A0A0A0 | Descriptions, hints |
@@ -27,7 +27,7 @@
 ## Design Principles Applied
 
 ### 1. Modern Material Design
-- Purple-based primary palette (#6200EE / #BB86FC)
+- Green-based primary palette (#00FF00 / #00FF00)
 - Teal accent color (#03DAC6) for both modes
 - Proper contrast ratios for accessibility (WCAG AA compliant)
 
