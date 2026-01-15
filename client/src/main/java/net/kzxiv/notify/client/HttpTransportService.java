@@ -17,7 +17,7 @@ public class HttpTransportService extends IntentService
 
 	public HttpTransportService()
 	{
-		super("Notifikator HTTP Transport Service");
+		super("Geekz Forwarder HTTP Transport Service");
 	}
 
 	protected void onHandleIntent(Intent intent)
@@ -64,7 +64,7 @@ public class HttpTransportService extends IntentService
 		}
 		catch (Exception e)
 		{
-			Log.e("Notifikator", String.format("Failed HTTP POST: %s", e.toString()));
+			Log.e("Geekz Forwarder", String.format("Failed HTTP POST: %s", e.toString()));
 		}
 	}
 }

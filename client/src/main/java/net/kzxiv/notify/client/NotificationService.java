@@ -13,6 +13,8 @@ import android.util.*;
 import org.json.*;
 import java.io.*;
 import java.nio.charset.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class NotificationService extends NotificationListenerService
 {
@@ -20,12 +22,12 @@ public class NotificationService extends NotificationListenerService
 	{
 		super.onCreate();
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-		Log.d("Notifikator", "Notification service created.");
+		Log.d("Geekz Forwarder", "Notification service created.");
 	}
 
 	public void onDestroy()
 	{
-		Log.d("Notifikator", "Notification service destroyed.");
+		Log.d("Geekz Forwarder", "Notification service destroyed.");
 		super.onDestroy();
 	}
 
@@ -38,8 +40,23 @@ public class NotificationService extends NotificationListenerService
 
 		if (!enabled)
 		{
-			Log.i("Notifikator", "Skipping notification because not enabled.");
+			Log.i("Geekz Forwarder", "Skipping notification because not enabled.");
 			return;
+		}
+
+		String packageName = sbn.getPackageName();
+
+		final boolean appFilterEnabled = prefs.getBoolean(res.getString(R.string.key_app_filter), false);
+		
+		if (appFilterEnabled)
+		{
+			Set<String> selectedApps = new HashSet<String>(prefs.getStringSet(res.getString(R.string.key_selected_apps), new HashSet<String>()));
+			
+			if (!selectedApps.contains(packageName))
+			{
+				Log.i("Geekz Forwarder", "Skipping notification from " + packageName + " because app filter is enabled and app is not selected.");
+				return;
+			}
 		}
 
 		final boolean wifiOnly = prefs.getBoolean(res.getString(R.string.key_wifionly), false);
@@ -51,7 +68,7 @@ public class NotificationService extends NotificationListenerService
 
 			if (ni == null || ni.getType() != ConnectivityManager.TYPE_WIFI)
 			{
-				Log.i("Notifikator", "Skipping notification because not connected to wifi.");
+				Log.i("Geekz Forwarder", "Skipping notification because not connected to wifi.");
 				return;
 			}
 		}
@@ -61,7 +78,7 @@ public class NotificationService extends NotificationListenerService
 
 		if (endpointUrl == null || "".equals(endpointUrl))
 		{
-			Log.e("Notifikator", "No endpoint specified.");
+			Log.e("Geekz Forwarder", "No endpoint specified.");
 			return;
 		}
 
@@ -69,7 +86,6 @@ public class NotificationService extends NotificationListenerService
 		final String endpointUsername = prefs.getString(res.getString(R.string.key_endpointuser), null);
 		final String endpointPassword = prefs.getString(res.getString(R.string.key_endpointpw), null);
 
-		String packageName = sbn.getPackageName();
 		Notification notification = sbn.getNotification();
 
 		Object[] payload;
@@ -86,7 +102,7 @@ public class NotificationService extends NotificationListenerService
 
 		if (payload == null)
 		{
-			Log.e("Notifikator", String.format("No payload or unknown protocol \"%s\".", protocol));
+			Log.e("Geekz Forwarder", String.format("No payload or unknown protocol \"%s\".", protocol));
 			return;
 		}
 
