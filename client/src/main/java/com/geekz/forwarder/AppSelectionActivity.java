@@ -84,10 +84,14 @@ public class AppSelectionActivity extends ListActivity
 		apps = new ArrayList<AppInfo>();
 		for (ApplicationInfo info : packages)
 		{
-			// Include all apps, not just those with launcher intents
-			// This ensures apps like Dana, Instagram, and other notification-sending apps are included
-			String appName = pm.getApplicationLabel(info).toString();
-			apps.add(new AppInfo(info.packageName, appName, info));
+			// Only include user-installed apps, exclude system apps
+			if ((info.flags & ApplicationInfo.FLAG_SYSTEM) == 0)
+			{
+				// Include all user apps, not just those with launcher intents
+				// This ensures apps like Dana, Instagram, and other notification-sending apps are included
+				String appName = pm.getApplicationLabel(info).toString();
+				apps.add(new AppInfo(info.packageName, appName, info));
+			}
 		}
 		
 		// Sort by app name
