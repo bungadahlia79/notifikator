@@ -24,7 +24,7 @@ jobs:
 
       - name: Decrypt Keystore File
         run: |
-          echo "BASE64_ENCODED_KEYSTORE" | base64 -d > release-key.jks
+          echo "amgeekz" | base64 -d > release-key.jks
 
       - name: Set Up Gradle
         uses: gradle/gradle-build-action@v2
@@ -57,4 +57,3 @@ jobs:
           body: |
             🚀 **New Release!**
             Download the APK below and enjoy the latest features.
-
