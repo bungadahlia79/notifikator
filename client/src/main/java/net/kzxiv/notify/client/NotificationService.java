@@ -44,12 +44,13 @@ public class NotificationService extends NotificationListenerService
 			return;
 		}
 
+		String packageName = sbn.getPackageName();
+
 		final boolean appFilterEnabled = prefs.getBoolean(res.getString(R.string.key_app_filter), false);
 		
 		if (appFilterEnabled)
 		{
 			Set<String> selectedApps = new HashSet<String>(prefs.getStringSet(res.getString(R.string.key_selected_apps), new HashSet<String>()));
-			String packageName = sbn.getPackageName();
 			
 			if (!selectedApps.contains(packageName))
 			{
@@ -85,7 +86,6 @@ public class NotificationService extends NotificationListenerService
 		final String endpointUsername = prefs.getString(res.getString(R.string.key_endpointuser), null);
 		final String endpointPassword = prefs.getString(res.getString(R.string.key_endpointpw), null);
 
-		String packageName = sbn.getPackageName();
 		Notification notification = sbn.getNotification();
 
 		Object[] payload;
