@@ -41,24 +41,39 @@ public class AppSelectionActivity extends ListActivity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_app_selection);
 		
-		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		selectedApps = prefs.getStringSet(getString(R.string.key_selected_apps), new HashSet<String>());
-		selectedApps = new HashSet<String>(selectedApps); // Make mutable copy
-		
-		loadApps();
-		
-		AppAdapter adapter = new AppAdapter();
-		setListAdapter(adapter);
+		try {
+			prefs = PreferenceManager.getDefaultSharedPreferences(this);
+			Set<String> savedApps = prefs.getStringSet(getString(R.string.key_selected_apps), null);
+			selectedApps = savedApps != null ? new HashSet<String>(savedApps) : new HashSet<String>();
+			
+			loadApps();
+			
+			AppAdapter adapter = new AppAdapter();
+			setListAdapter(adapter);
+		} catch (Exception e) {
+			// Handle any exceptions gracefully
+			e.printStackTrace();
+			selectedApps = new HashSet<String>();
+			apps = new ArrayList<AppInfo>();
+			AppAdapter adapter = new AppAdapter();
+			setListAdapter(adapter);
+		}
 	}
 	
 	protected void onPause()
 	{
 		super.onPause();
 		// Save selected apps
-		SharedPreferences.Editor editor = prefs.edit();
-		editor.putStringSet(getString(R.string.key_selected_apps), selectedApps);
-		editor.apply();
+		try {
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putStringSet(getString(R.string.key_selected_apps), selectedApps);
+			editor.apply();
+		} catch (Exception e) {
+			// Handle save errors gracefully
+			e.printStackTrace();
+		}
 	}
 	
 	private void loadApps()
@@ -94,7 +109,7 @@ public class AppSelectionActivity extends ListActivity
 	{
 		AppAdapter()
 		{
-			super(AppSelectionActivity.this, android.R.layout.simple_list_item_multiple_choice, apps);
+			super(AppSelectionActivity.this, R.layout.app_selection_item, apps);
 		}
 		
 		public View getView(final int position, View convertView, ViewGroup parent)
@@ -102,7 +117,7 @@ public class AppSelectionActivity extends ListActivity
 			View view = convertView;
 			if (view == null)
 			{
-				view = getLayoutInflater().inflate(android.R.layout.simple_list_item_multiple_choice, parent, false);
+				view = getLayoutInflater().inflate(R.layout.app_selection_item, parent, false);
 			}
 			
 			final AppInfo app = apps.get(position);
