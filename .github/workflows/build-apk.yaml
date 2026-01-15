@@ -24,7 +24,7 @@ jobs:
 
       - name: Decrypt Keystore File
         run: |
-          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > release-key.jks
+          echo "BASE64_ENCODED_KEYSTORE" | base64 -d > release-key.jks
 
       - name: Set Up Gradle
         uses: gradle/gradle-build-action@v2
@@ -41,9 +41,9 @@ jobs:
           --digestalg SHA-256 \
           --keystore ./release-key.jks \
           app/build/outputs/apk/release/app-release-unsigned.apk \
-          ${{ secrets.ANDROID_KEY_ALIAS }} \
-          --storepass ${{ secrets.ANDROID_KEYSTORE_PASSWORD }} \
-          --keypass ${{ secrets.ANDROID_KEY_PASSWORD }}
+          my-key-alias \
+          --storepass my-keystore-password \
+          --keypass my-key-password
 
       - name: Align APK
         run: |
