@@ -43,7 +43,8 @@ final class BitmapHelper
 			}
 			
 			// Handle Icon object (API 23+)
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && iconObject instanceof android.graphics.drawable.Icon)
+			// The instanceof check will fail on older APIs where Icon class doesn't exist
+			if (iconObject instanceof android.graphics.drawable.Icon)
 			{
 				android.graphics.drawable.Icon icon = (android.graphics.drawable.Icon)iconObject;
 				Drawable drawable = icon.loadDrawable(context);
@@ -54,13 +55,20 @@ final class BitmapHelper
 				else if (drawable != null)
 				{
 					// Convert drawable to bitmap
-					Bitmap bitmap = Bitmap.createBitmap(
-						drawable.getIntrinsicWidth() > 0 ? drawable.getIntrinsicWidth() : 1,
-						drawable.getIntrinsicHeight() > 0 ? drawable.getIntrinsicHeight() : 1,
-						Bitmap.Config.ARGB_8888
-					);
+					// Use reasonable default size if intrinsic dimensions are not available
+					int width = drawable.getIntrinsicWidth();
+					int height = drawable.getIntrinsicHeight();
+					
+					// Default to 48dp converted to pixels if no intrinsic size
+					if (width <= 0 || height <= 0)
+					{
+						float density = context.getResources().getDisplayMetrics().density;
+						width = height = (int)(48 * density);
+					}
+					
+					Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 					Canvas canvas = new Canvas(bitmap);
-					drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+					drawable.setBounds(0, 0, width, height);
 					drawable.draw(canvas);
 					return bitmap;
 				}
