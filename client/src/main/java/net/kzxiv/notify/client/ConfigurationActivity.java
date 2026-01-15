@@ -1,6 +1,10 @@
 package net.kzxiv.notify.client;
 
-import android.app.*;
+import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.Service;
 import android.content.*;
 import android.content.res.*;
 import android.graphics.*;
