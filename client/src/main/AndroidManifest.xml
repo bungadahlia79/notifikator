@@ -2,6 +2,11 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<!-- Required for Android 11+ to query all installed packages.
+	     This is necessary because the app allows users to select ANY installed app
+	     to forward notifications from. We cannot use <queries> element because
+	     we don't know in advance which apps users want to monitor. -->
+	<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
 	<application
 		android:allowBackup="true"
