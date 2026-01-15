@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<!-- Base app theme supporting light/dark mode -->
-	<style name="AppTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+	<!-- Dark mode app theme -->
+	<style name="AppTheme" parent="@android:style/Theme.Material">
 		<item name="android:colorPrimary">@color/colorPrimary</item>
 		<item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="android:colorAccent">@color/colorAccent</item>
@@ -12,8 +12,8 @@
 		<item name="android:textViewStyle">@style/ModernTextView</item>
 	</style>
 
-	<!-- Preference theme matching app theme -->
-	<style name="PreferenceTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+	<!-- Dark mode preference theme -->
+	<style name="PreferenceTheme" parent="@android:style/Theme.Material">
 		<item name="android:colorPrimary">@color/colorPrimary</item>
 		<item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="android:colorAccent">@color/colorAccent</item>

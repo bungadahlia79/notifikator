@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Modern preference item with card-like appearance -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,7 +11,8 @@
     android:paddingBottom="@dimen/preference_padding_vertical"
     android:orientation="vertical"
     android:gravity="center_vertical"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:elevation="1dp">
 
     <TextView
         android:id="@android:id/title"
@@ -19,6 +21,8 @@
         android:singleLine="true"
         android:textSize="@dimen/preference_title_size"
         android:textColor="@color/textPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.01"
         android:ellipsize="marquee"
         android:fadingEdge="horizontal" />
 
@@ -28,6 +32,8 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/preference_summary_size"
         android:textColor="@color/textSecondary"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.01"
         android:maxLines="4"
         android:layout_marginTop="4dp" />
 
