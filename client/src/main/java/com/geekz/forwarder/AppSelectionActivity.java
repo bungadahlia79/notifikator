@@ -104,7 +104,6 @@ public class AppSelectionActivity extends ListActivity
 				String appName = pm.getApplicationLabel(info).toString();
 				apps.add(new AppInfo(info.packageName, appName, info));
 				appsIncluded++;
-				Log.d(TAG, "Included app: " + appName + " (" + info.packageName + ")");
 			}
 			else
 			{
