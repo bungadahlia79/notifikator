@@ -17,3 +17,8 @@ android
 	}
 	namespace 'com.geekz.forwarder'
 }
+
+dependencies
+{
+	implementation 'androidx.core:core:1.12.0'
+}
